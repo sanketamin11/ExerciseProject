@@ -24,6 +24,7 @@ public class StepDefination {
 	WebElement password;
 	WebElement login;
 	String keyFirst;
+	String colorString;
 	
 	
 	
@@ -193,17 +194,17 @@ public class StepDefination {
 	@When("^I press on key \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"$")
 	public void i_press_on_key(String expectedkeyFirst, String expectedkeySecond, String expectedkeyThird, String expectedkeyFourth) throws InterruptedException {
 		
-		
+		String expectedColour = "green";
 		Actions action = new Actions(driver);
 		
 		action.sendKeys(Keys.ENTER).build().perform();
 		String actualKeyFirst = driver.findElement(By.xpath(".//p[@id='result']")).getText();
 		assertTrue(actualKeyFirst.contains(expectedkeyFirst));
 		//Assert.assertEquals(actualKeyFirst,expectedkeyFirst);
-		String expectedColour1 = "green";
-		String colorString = driver.findElement(By.id("result")).getAttribute("style");
+		
+		colorString = driver.findElement(By.id("result")).getAttribute("style");
 		System.out.println( "colour is -->"+colorString);
-		assertTrue(colorString.contains(expectedColour1));
+		assertTrue(colorString.contains(expectedColour));
 		System.out.println("Firstkey test is successfull");
 		
 		Thread.sleep(3000);
@@ -212,39 +213,34 @@ public class StepDefination {
 		action.sendKeys(Keys.CONTROL).build().perform();
 		String actualKeySecond = driver.findElement(By.xpath(".//p[@id='result']")).getText();
 		assertTrue(actualKeySecond.contains(expectedkeySecond));
-		//Assert.assertEquals(actualKeySecond, expectedkeySecond);
-		String expectedColour2 = "green";
-		//String colorString = driver.findElement(By.id("result")).getAttribute("style");
+		
+		colorString = driver.findElement(By.id("result")).getAttribute("style");
 		System.out.println( "colour is -->"+colorString);
-		assertTrue(colorString.contains(expectedColour2));
+		assertTrue(colorString.contains(expectedColour));
 		System.out.println("Secondkey test is successfull");
 		
 		Thread.sleep(3000);
 		
 		
-		//Actions action = new Actions(driver);
 		action.sendKeys(Keys.ALT).build().perform();
 		String actualKeyThird = driver.findElement(By.xpath(".//p[@id='result']")).getText();
 		assertTrue(actualKeyThird.contains(expectedkeyThird));
-		//Assert.assertEquals(actualKeyThird, expectedkeyThird);
-		String expectedColour3 = "green";
-		//String colorString = driver.findElement(By.id("result")).getAttribute("style");
+	
+		colorString = driver.findElement(By.id("result")).getAttribute("style");
 		System.out.println( "colour is -->"+colorString);
-		assertTrue(colorString.contains(expectedColour3));
+		assertTrue(colorString.contains(expectedColour));
 		System.out.println("Thirdkey test is successfull");
 		
 		
 		Thread.sleep(3000);
 		
-		//Actions action = new Actions(driver);
 		action.sendKeys(Keys.SHIFT).build().perform();
 		String actualKeyFourth = driver.findElement(By.xpath(".//p[@id='result']")).getText();
 		assertTrue(actualKeyFourth.contains(expectedkeyFourth));
-		//Assert.assertEquals(actualKeyFourth, expectedkeyFourth);
-		String expectedColour4 = "green";
-		//String colorString = driver.findElement(By.id("result")).getAttribute("style");
+		
+		colorString = driver.findElement(By.id("result")).getAttribute("style");
 		System.out.println( "colour is -->"+colorString);
-		assertTrue(colorString.contains(expectedColour4));
+		assertTrue(colorString.contains(expectedColour));
 		System.out.println("Fourthkey test is successfull");
 		
 
