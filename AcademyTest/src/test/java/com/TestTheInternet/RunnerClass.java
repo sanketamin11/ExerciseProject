@@ -12,9 +12,6 @@ import cucumber.api.junit.Cucumber;
 //tags= {"@Scroll"},
 //tags= {"@KeyPress"},
 
-				
-				//features = { "C:\\CucumberTraining\\AutomationTest\\src\\test\\java\\com\\Files"},
-				//glue = {"com.MainAuto","com.Login"}
 				features = {".\\src\\test\\java\\com\\TestCases"},
 				glue = {"com.TestTheInternet"})
 

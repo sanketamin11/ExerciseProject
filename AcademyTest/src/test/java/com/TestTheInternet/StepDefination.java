@@ -13,6 +13,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+
+import com.gargoylesoftware.htmlunit.WebWindow;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -27,11 +31,6 @@ public class StepDefination {
 	WebElement login;
 	String keyFirst;
 	String colorString;
-	
-	
-	
-	
-	
 	
 	@Given("^I am on the login page$")
 	public void i_am_on_the_login_page() {
@@ -104,8 +103,11 @@ public class StepDefination {
 		String actual = driver.findElement(By.xpath(".//div[@id='flash-messages']")).getText();
 		
 		System.out.println("text is --->>>" + actual);
-			
+		
 		assertTrue(actual.contains(expected));
+		
+		
+		//Assert.assertEquals(actual, expected);
 			
 			Thread.sleep(5000);
 			
@@ -150,10 +152,11 @@ public class StepDefination {
 		
 		
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		Thread.sleep(2000);
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");		
+		Thread.sleep(3000);
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		//js.executeScript("window.scrollTo(0, document.body.)");
+		//js.executeScript("scroll(0, 250);");
 		Thread.sleep(3000);
 		
 	   
@@ -161,9 +164,14 @@ public class StepDefination {
 
 	@And("^scroll back to the top of the page$")
 	public void scroll_back_to_the_top_of_the_page() {
+		
+	   
+		
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		WebElement ele =driver.findElement(By.xpath("//h3"));
-		js.executeScript("arguments[0].scrollIntoView();",ele );
+		//WebElement ele =driver.findElement(By.xpath("//h3"));
+		//js.executeScript("arguments[0].scrollIntoView();",ele );
+		
+		 js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
 	}
 	
 	@Then("^validate assertation value \"([^\"]*)\"$")
@@ -199,6 +207,15 @@ public class StepDefination {
 		Actions action = new Actions(driver);
 		
 		action.sendKeys(Keys.ENTER).build().perform();
+
+		
+		//action.moveToElement(driver.findElement(By.xpath("")).sendKeys(""));
+		
+	
+		//action.moveToElement(driver.findElement(By.id("yourAccount"))).build().perform();
+		//action.moveToElement(userName).sendKeys("").build().perform();
+		
+		
 		String actualKeyFirst = driver.findElement(By.xpath(".//p[@id='result']")).getText();
 		assertTrue(actualKeyFirst.contains(expectedkeyFirst));
 		//Assert.assertEquals(actualKeyFirst,expectedkeyFirst);
